@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+<div class="container">
+    <p>Title:<br>  {{ title }}</p>
+    <p>Meta Description:<br>{{ meta }}</p>
+    <p>Hn Headings:<br> 
+    <ol>
+        {% for heading in headings %}
+        
+           <li> {{ heading }}</li>
+       
+        {% endfor %}
+     </ol>
+    </p>
+    <p>Site Maps:<br> <ol>
+        {% for sitemap in sitemaps %}
+        
+           <li> {{ sitemap }}</li>
+       
+        {% endfor %}
+     </ol></p>
+    <p>robot.txt check:<br> {{ robot }}</p>
+    <p> error check:
+       
+            {% for err in error %}
+            
+            <br>{{ err }}
+                
+            {% endfor %}
+    
+    </p>
+    <p>ssl check:<br> {{ ssl }}</p>
+    <p>Image Altenate: {{alts.checked}}</p>
+    <ul>
+        {% for message in alts.messages %}
+            <li>
+                {{message}}
+            </li>
+        {% endfor %}
+    </ul>
+    <p>CSS check: {{css.checked}}</p>
+    <ul>
+        {% for msg in css.message %}
+            <li>
+                {{msg}}
+            </li>
+
+        {% endfor %}
+    </ul>
+    <p>JS check: {{js.checked}}</p>
+    <ul>
+        {% for msg in js.message %}
+            <li>
+                {{msg}}
+            </li>
+
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
