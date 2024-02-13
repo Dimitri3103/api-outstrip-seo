@@ -6,5 +6,5 @@ services:
     ports:
       - '8005:8005'
     volumes:
-      - .:/seo/app  
+      - .:/app  
     
