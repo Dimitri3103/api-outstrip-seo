@@ -274,7 +274,7 @@ def screenshot(url):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome()
 
     # driver = webdriver.Chrome(options=options)
 
