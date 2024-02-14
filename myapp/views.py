@@ -249,8 +249,14 @@ def page_load_time(url):
     options.add_argument('--disable-dev-shm-usage')
     # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     # driver = webdriver.Chrome()
-    options.binary_location = '/usr/bin/google-chrome'
-    driver = webdriver.Chrome(service=ChromeService('/usr/bin/chromedriver'), options=options)
+
+    # options.binary_location = '/usr/bin/google-chrome'
+    # driver = webdriver.Chrome(service=ChromeService('/usr/bin/chromedriver'), options=options)
+
+    folder = pathlib.Path(__file__).parent.resolve()
+    chrome_driver_path = str(folder) + "\chromedriver.exe"
+    driver = webdriver.Chrome(chrome_driver_path, options=options)
+
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
     responseStart = driver.execute_script(
