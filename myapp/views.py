@@ -255,7 +255,7 @@ def page_load_time(url):
 
     # driver = webdriver.Chrome(options=options)
 
-    driver = webdriver.Chrome('/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe', options=options)
+    driver = webdriver.Chrome('/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe')
 
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
