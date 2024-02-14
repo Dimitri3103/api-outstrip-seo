@@ -4,9 +4,25 @@ version: '3.8'
 services:
   web:
     build: .
-    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8005
+    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8080
     volumes:
-      - .:/home/app/web/staticfiles
-      - .:/home/app/web/mediafiles
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
     expose:
-      - 8005
+      - 8080
+    env_file:
+      - .env
+  
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    ports:
+      - 8005:80
+    depends_on:
+      - web
+
+
+volumes:
+  static_volume:
+  media_volume:
