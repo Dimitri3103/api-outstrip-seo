@@ -244,13 +244,13 @@ def google_analytics_check(soup):
 def page_load_time(url):
 
     options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
 
-    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome(options=options)
 
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
@@ -268,14 +268,16 @@ def page_load_time(url):
 def screenshot(url):
 
     ob = Screenshot.Screenshot()
-    # driver = webdriver.Chrome(options=options)
+    
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()), options=options
-    )
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    # driver = webdriver.Chrome(options=options)
+
     driver.get(url)
     img_url = ob.full_screenshot(
         driver,
