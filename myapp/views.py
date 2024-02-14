@@ -243,7 +243,7 @@ def google_analytics_check(soup):
 
 def page_load_time(url):
 
-    service = ChromeService(executable_path=r'/usr/bin/chromedriver')
+    service = ChromeService(executable_path=r'/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe')
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
