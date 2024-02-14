@@ -247,8 +247,10 @@ def page_load_time(url):
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     # driver = webdriver.Chrome()
+    options.binary_location = '/usr/bin/google-chrome'
+    driver = webdriver.Chrome(service=ChromeService('/usr/bin/chromedriver'), options=options)
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
     responseStart = driver.execute_script(
