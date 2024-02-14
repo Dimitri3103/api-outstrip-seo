@@ -247,10 +247,13 @@ def page_load_time(url):
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.binary_location('/usr/bin/google-chrome')
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     # driver = webdriver.Chrome(options=options)
+
+    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
 
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
@@ -273,10 +276,9 @@ def screenshot(url):
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.binary_location('/usr/bin/google-chrome')
 
-    driver = webdriver.Chrome()
-
-    # driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
 
     driver.get(url)
     img_url = ob.full_screenshot(
