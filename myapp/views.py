@@ -6,7 +6,7 @@ import urllib.request
 import urllib.error
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.service import Service
 from Screenshot import Screenshot
 import pathlib
 from webdriver_manager.chrome import ChromeDriverManager
@@ -243,19 +243,14 @@ def google_analytics_check(soup):
 
 def page_load_time(url):
 
-    service = ChromeService(executable_path=r'/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe')
-    options = webdriver.ChromeOptions()
+    options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
     # driver = webdriver.Chrome()
-
-    # options.binary_location = '/usr/bin/google-chrome'
-    # driver = webdriver.Chrome(service=ChromeService('/usr/bin/chromedriver'), options=options)
-
-    driver = webdriver.Chrome(service=service, options=options)
 
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
@@ -274,12 +269,12 @@ def screenshot(url):
 
     ob = Screenshot.Screenshot()
     # driver = webdriver.Chrome()
-    options = webdriver.ChromeOptions()
+    options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome(
-        service=ChromeService(ChromeDriverManager().install()), options=options
+        service=Service(ChromeDriverManager().install()), options=options
     )
     driver.get(url)
     img_url = ob.full_screenshot(
