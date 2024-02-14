@@ -243,11 +243,13 @@ def google_analytics_check(soup):
 
 def page_load_time(url):
 
-    options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.binary_location = '/usr/bin/google-chrome'
+    # options = Options()
+    # options.add_argument('--headless')
+    # options.add_argument('--no-sandbox')
+    # options.add_argument('--disable-dev-shm-usage')
+    # options.binary_location = '/usr/bin/google-chrome'
+
+    options = webdriver.ChromeOptions()
 
     # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
