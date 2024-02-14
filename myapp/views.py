@@ -243,7 +243,8 @@ def google_analytics_check(soup):
 
 def page_load_time(url):
 
-    options = Options()
+    service = ChromeService(executable_path=r'/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe')
+    options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
@@ -254,8 +255,7 @@ def page_load_time(url):
     # options.binary_location = '/usr/bin/google-chrome'
     # driver = webdriver.Chrome(service=ChromeService('/usr/bin/chromedriver'), options=options)
 
-    chrome_driver_path = r'/home/dimitri/api-outstrip-seo/myapp/chromedriver.exe'
-    driver = webdriver.Chrome(chrome_driver_path, options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     driver.get(url)
     # navigationStart = driver.execute_script("return window.performance.timing.navigationStart")
