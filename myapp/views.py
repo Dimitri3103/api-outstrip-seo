@@ -466,11 +466,11 @@ def score(soup, url):
         counter -= 5
     else:
         pass
-    load_time = page_load_time(url)
-    if load_time > 7:
-        counter -= 5
-    else:
-        pass
+    # load_time = page_load_time(url)
+    # if load_time > 7:
+    #     counter -= 5
+    # else:
+    #     pass
     cdn = cdn_not_delivered(soup)
     if len(cdn) != 0:
         counter -= 5

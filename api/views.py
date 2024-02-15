@@ -46,7 +46,7 @@ class SeoViewSet(ViewSet):
                 "elements_delivered_by_cdn": data['Elements Delivered by CDN'],
                 "elements_not_delivered_by_cdn": data['Elements Not Delivered by CDN'],
                 "old_tags": data['Old tags'],
-                "load_time":  data['Load time'],
+                # "load_time":  data['Load time'],
             }
             return Response(result, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -119,7 +119,7 @@ def perf(url):
         'Minified JS': JS_minify_check(soup),
         'JS Not Minfied': JS_minify_check(soup),
         'Old tags': old_tag_check(soup),
-        'Load time':  page_load_time(url),
+        # 'Load time':  page_load_time(url),
         'Elements Delivered by CDN':  cdn_delivered(soup),
         'Elements Not Delivered by CDN':  cdn_not_delivered(soup),
 
